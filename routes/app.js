@@ -25,3 +25,20 @@ router.post('/users', (request, response, next)=>{
     })
    .catch(next);
 });
+
+
+// post route -- for loging users in
+router.post("/users/login", async (request, response) => {
+    try {
+        var user = await User.findOne({ email: request.body.email }).exec();
+        if(!user) {
+            return response.status(400).send({ message: "The email does not exist" });
+        }
+        if(!bcrypt.compareSync(request.body.password, user.password)) {
+            return response.status(400).send({ message: "The password is invalid" });
+        }
+        response.send({ message: "Login successful" });
+    } catch (error) {
+        response.status(500).send(error);
+    }
+});
