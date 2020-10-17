@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyPaser = require('body-parser');
 const mongoose = require('mongoose');
-const router = require('./routes/app')
+const router = require('./routes/app');
+const { request, response } = require('express');
 
 //setting up an express app
  const app = express();
@@ -17,10 +18,15 @@ const router = require('./routes/app')
 app.use('/api', router );
 
 
+// middleware for error handling
+app.use((request, response, next)=>{
+    response.status(404).send({ message: 'Route not found'});
+});
+
 
 // middleware for error handling
-app.use((err, req, res, next)=>{
-    res.status(422).send({error: err.message})
+app.use((error, request, response, next)=>{
+    response.status(422).send({error: err.message})
 })
 
 
