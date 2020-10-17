@@ -18,15 +18,15 @@ const { request, response } = require('express');
 app.use('/api', router );
 
 
-// middleware for error handling
+// middleware for error handling (404)
 app.use((request, response, next)=>{
-    response.status(404).send({ message: 'Route not found'});
+    response.status(404).send({ message: 'Route not found, check if you entered the correct route'});
 });
 
 
-// middleware for error handling
+// middleware for error handling (422)
 app.use((error, request, response, next)=>{
-    response.status(422).send({error: err.message})
+    response.status(422).send({error: error.message})
 })
 
 
