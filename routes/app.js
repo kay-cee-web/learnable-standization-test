@@ -147,4 +147,11 @@ router.get('/foods/:id', (request, response, next)=>{
 });
 
 
+// get route -- for getting one admin
+router.get('/admin/:id', (request, response, next)=>{
+    Admin.findOne({_id: request.params.id}, request.body)
+        .then((admin)=>{
+             response.send(admin)
+    })    
+});
 
