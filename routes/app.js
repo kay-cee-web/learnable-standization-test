@@ -107,4 +107,13 @@ router.get('/foods', (request, response, next)=>{
 });
 
 
+// get route -- for getttng all users
+router.get('/users', (request, response, next)=>{
+    User.find({})
+        .then((user)=>{
+            response.send(user);
+        });
+});
+
+
 
