@@ -116,4 +116,14 @@ router.get('/users', (request, response, next)=>{
 });
 
 
+// get route -- for getting one user
+router.get('/users/:id', (request, response, next)=>{
+    User.findOne({_id: request.params.id}, request.body)
+        .then((user)=>{
+             response.send(user)
+    })
+       
+});
+
+
 
