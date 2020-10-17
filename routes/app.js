@@ -201,3 +201,15 @@ router.put('/admin/:id', (request, response, next)=>{
     })
 });
 
+
+// put route -- for  removing finished avaliable foods 
+router.put('/avaliablefoods/:id', (request, response, next)=>{
+    Food.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
+        Food.findOne({_id: request.params.id})
+            .then((food)=>{
+                response.send(food)
+        })
+           
+    })
+});
+
