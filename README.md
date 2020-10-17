@@ -1,5 +1,5 @@
- **PLEASE READ**
- **for our route tesing please use the following**
+ **PLEASE READ
+ **For our route tesing please use the following
  *localhost:3000/api/admin -- post, get, update and delete admin
  *localhost:3000/api/admin/login -- for admin to login
  *localhost:3000/api/users --- post, get, update and delete users
