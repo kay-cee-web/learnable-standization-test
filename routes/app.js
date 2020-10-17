@@ -137,4 +137,14 @@ router.get('/orders/:id', (request, response, next)=>{
 });
 
 
+// get route -- for getting one order
+router.get('/foods/:id', (request, response, next)=>{
+    Food.findOne({_id: request.params.id}, request.body)
+        .then((food)=>{
+             response.send(food)
+    })
+       
+});
+
+
 
