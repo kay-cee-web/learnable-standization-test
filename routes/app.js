@@ -235,3 +235,13 @@ router.delete('/admin/:id', (request, response, next)=>{
     
 });
 
+
+// delete route -- for deleting foods from database
+router.delete('/foods/:id', (request, response, next)=>{
+    Food.findByIdAndRemove({_id: request.params.id})
+     .then((food)=>{
+        response.send(food);
+    })
+    
+});
+
