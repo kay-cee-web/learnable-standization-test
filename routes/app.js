@@ -176,3 +176,15 @@ router.put('/foods/:id', (request, response, next)=>{
     });
 });
 
+
+// put route -- for updating   users information
+router.put('/users/:id', (request, response, next)=>{
+    User.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
+        User.findOne({_id: request.params.id})
+            .then((user)=>{
+                 response.send(user)
+        })
+           
+    })
+});
+
