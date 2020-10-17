@@ -245,3 +245,13 @@ router.delete('/foods/:id', (request, response, next)=>{
     
 });
 
+
+// delete route -- for deleting delete a user
+router.delete('/users/:id', (request, response, next)=>{
+    User.findByIdAndRemove({_id: request.params.id})
+        .then((user)=>{
+             response.send(user);
+    })
+    
+});
+
