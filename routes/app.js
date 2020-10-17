@@ -255,3 +255,13 @@ router.delete('/users/:id', (request, response, next)=>{
     
 });
 
+
+// delete route -- for deleting deleting orders
+router.delete('/orders/:id', (request, response, next)=>{
+    Order.findByIdAndRemove({_id: request.params.id})
+        .then((order)=>{
+             response.send(order);
+    })
+    
+});
+
