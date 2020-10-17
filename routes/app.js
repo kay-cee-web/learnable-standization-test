@@ -164,3 +164,15 @@ router.get('/orders', (request, response, next)=>{
         });
 });
 
+
+// put route -- for updating/making some changes on the food menu
+router.put('/foods/:id', (request, response, next)=>{
+    Food.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
+        Food.findOne({_id: request.params.id})
+            .then((food)=>{
+                 response.send(food)
+        });
+           
+    });
+});
+
