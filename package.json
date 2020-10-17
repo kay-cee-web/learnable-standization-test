@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kay-cee-web/learnable-standization-test/issues"
   },
-  "homepage": "https://github.com/kay-cee-web/learnable-standization-test#readme"
+  "homepage": "https://github.com/kay-cee-web/learnable-standization-test#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
