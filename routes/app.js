@@ -42,3 +42,13 @@ router.post("/users/login", async (request, response) => {
         response.status(500).send(error);
     }
 });
+
+
+// post route -- for registering admin
+router.post('/admin', (request, response, next)=>{
+    Admin.create(request.body).then((admin)=>{
+        response.send(admin);
+    })
+    .catch(next);
+});
+
