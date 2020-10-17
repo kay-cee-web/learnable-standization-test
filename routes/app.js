@@ -78,3 +78,13 @@ router.post('/orders', (request, response, next)=>{
     .catch(next);
 });
 
+
+// get route -- for all getting admins
+router.get('/admin', (request, response,  next)=>{
+    Admin.find({})
+        .then((admin)=>{
+            response.send(admin);
+        });
+});
+
+
