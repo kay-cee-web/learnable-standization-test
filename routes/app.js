@@ -69,3 +69,12 @@ router.post("/admin/login", async (request, response) => {
     }
 });
 
+
+// post route -- for ordering food
+router.post('/orders', (request, response, next)=>{
+    Order.create(request.body).then((order)=>{
+        response.send(order);
+    })
+    .catch(next);
+});
+
