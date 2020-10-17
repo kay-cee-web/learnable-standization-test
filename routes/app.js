@@ -213,3 +213,15 @@ router.put('/avaliablefoods/:id', (request, response, next)=>{
     })
 });
 
+
+// put route -- for  updating orders 
+router.put('/orders/:id', (request, response, next)=>{
+    Order.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
+        Order.findOne({_id: request.params.id})
+            .then((order)=>{
+                response.send(order)
+        })
+           
+    })
+});
+
