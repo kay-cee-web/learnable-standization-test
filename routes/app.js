@@ -52,3 +52,20 @@ router.post('/admin', (request, response, next)=>{
     .catch(next);
 });
 
+
+// post route -- for login admin
+router.post("/admin/login", async (request, response) => {
+    try {
+        var user = await Admin.findOne({ email: request.body.email }).exec();
+        if(!user) {
+            return response.status(400).send({ message: "This email does not exist" });
+        }
+        if(!bcrypt.compareSync(request.body.password, user.password)) {
+            return response.status(400).send({ message: "The password is invalid" });
+        }
+        response.send({ message: "Admin login was successful" });
+    } catch (error) {
+        response.status(500).send(error);
+    }
+});
+
