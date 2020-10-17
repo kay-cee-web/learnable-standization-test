@@ -188,3 +188,16 @@ router.put('/users/:id', (request, response, next)=>{
     })
 });
 
+
+
+// put route -- for  updating admin information
+router.put('/admin/:id', (request, response, next)=>{
+    Admin.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
+        Admin.findOne({_id: request.params.id})
+            .then((admin)=>{
+                response.send(admin)
+        })
+           
+    })
+});
+
