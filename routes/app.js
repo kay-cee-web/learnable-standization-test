@@ -155,3 +155,12 @@ router.get('/admin/:id', (request, response, next)=>{
     })    
 });
 
+
+// get route -- for getting all the orderderd food
+router.get('/orders', (request, response, next)=>{
+    Order.find({})
+        .then((order)=>{
+            response.send(order);
+        });
+});
+
