@@ -16,3 +16,12 @@ router.post('/foods', (request, response, next)=>{
          })
         .catch(next);
 });
+
+
+// post route -- for registering users
+router.post('/users', (request, response, next)=>{
+    User.create(request.body).then((user)=>{
+        response.send(user);
+    })
+   .catch(next);
+});
