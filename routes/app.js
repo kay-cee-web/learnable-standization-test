@@ -88,3 +88,23 @@ router.get('/admin', (request, response,  next)=>{
 });
 
 
+// get route -- for getting avaliable cooked food for the day
+router.get('/avaliablefoods', (request, response,  next)=>{
+    Food.find({avaliable: "true"})
+        .then((food)=>{
+            response.send(food);
+        });
+});
+
+
+
+// get route -- for getting all the food in the food menu
+router.get('/foods', (request, response, next)=>{
+    Food.find({})
+        .then((food)=>{
+            response.send(food);
+        });
+});
+
+
+
