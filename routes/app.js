@@ -265,3 +265,6 @@ router.delete('/orders/:id', (request, response, next)=>{
     
 });
 
+
+module.exports = router;
+
