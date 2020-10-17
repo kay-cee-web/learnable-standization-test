@@ -225,3 +225,13 @@ router.put('/orders/:id', (request, response, next)=>{
     })
 });
 
+
+// delete route -- for deleting  admin account
+router.delete('/admin/:id', (request, response, next)=>{
+    Admin.findByIdAndRemove({_id: request.params.id})
+        .then((admin)=>{
+            response.send(admin);
+        })
+    
+});
+
