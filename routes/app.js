@@ -8,14 +8,7 @@ const User = require('../models/users');
 
 
 
-// post route -- for adding food to food menu
-router.post('/foods', (request, response, next)=>{
-    Food.create(request.body)
-        .then((food)=>{
-            response.send(food);
-         })
-        .catch(next);
-});
+
 
 
 
@@ -78,13 +71,7 @@ router.get('/avaliablefoods', (request, response,  next)=>{
 
 
 
-// get route -- for getting all the food in the food menu
-router.get('/foods', (request, response, next)=>{
-    Food.find({})
-        .then((food)=>{
-            response.send(food);
-        });
-});
+
 
 
 
@@ -104,14 +91,7 @@ router.get('/orders/:id', (request, response, next)=>{
 });
 
 
-// get route -- for getting one order
-router.get('/foods/:id', (request, response, next)=>{
-    Food.findOne({_id: request.params.id}, request.body)
-        .then((food)=>{
-             response.send(food)
-    })
-       
-});
+
 
 
 // get route -- for getting one admin
@@ -132,16 +112,7 @@ router.get('/orders', (request, response, next)=>{
 });
 
 
-// put route -- for updating/making some changes on the food menu
-router.put('/foods/:id', (request, response, next)=>{
-    Food.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
-        Food.findOne({_id: request.params.id})
-            .then((food)=>{
-                 response.send(food)
-        });
-           
-    });
-});
+
 
 
 
@@ -160,16 +131,7 @@ router.put('/admin/:id', (request, response, next)=>{
 });
 
 
-// put route -- for  removing finished avaliable foods 
-router.put('/avaliablefoods/:id', (request, response, next)=>{
-    Food.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
-        Food.findOne({_id: request.params.id})
-            .then((food)=>{
-                response.send(food)
-        })
-           
-    })
-});
+
 
 
 // put route -- for  updating orders 
@@ -194,14 +156,7 @@ router.delete('/admin/:id', (request, response, next)=>{
 });
 
 
-// delete route -- for deleting foods from database
-router.delete('/foods/:id', (request, response, next)=>{
-    Food.findByIdAndRemove({_id: request.params.id})
-     .then((food)=>{
-        response.send(food);
-    })
-    
-});
+
 
 
 
