@@ -44,6 +44,15 @@ router.put('/foods/:id', (request, response, next)=>{
 });
 
 
+// get route -- for getting avaliable cooked food for the day
+router.get('/avaliablefoods', (request, response,  next)=>{
+    Food.find({avaliable: "true"})
+        .then((food)=>{
+            response.send(food);
+        });
+});
+
+
 // put route -- for  removing finished avaliable foods 
 router.put('/avaliablefoods/:id', (request, response, next)=>{
     Food.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{

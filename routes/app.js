@@ -17,30 +17,10 @@ const User = require('../models/users');
 
 
 
-// post route -- for registering admin
-router.post('/admin', (request, response, next)=>{
-    Admin.create(request.body).then((admin)=>{
-        response.send(admin);
-    })
-    .catch(next);
-});
 
 
-// post route -- for login admin
-router.post("/admin/login", async (request, response) => {
-    try {
-        var user = await Admin.findOne({ email: request.body.email }).exec();
-        if(!user) {
-            return response.status(400).send({ message: "This email does not exist" });
-        }
-        if(!bcrypt.compareSync(request.body.password, user.password)) {
-            return response.status(400).send({ message: "The password is invalid" });
-        }
-        response.send({ message: "Admin login was successful" });
-    } catch (error) {
-        response.status(500).send(error);
-    }
-});
+
+
 
 
 // post route -- for ordering food
@@ -52,22 +32,10 @@ router.post('/orders', (request, response, next)=>{
 });
 
 
-// get route -- for all getting admins
-router.get('/admin', (request, response,  next)=>{
-    Admin.find({})
-        .then((admin)=>{
-            response.send(admin);
-        });
-});
 
 
-// get route -- for getting avaliable cooked food for the day
-router.get('/avaliablefoods', (request, response,  next)=>{
-    Food.find({avaliable: "true"})
-        .then((food)=>{
-            response.send(food);
-        });
-});
+
+
 
 
 
@@ -94,13 +62,7 @@ router.get('/orders/:id', (request, response, next)=>{
 
 
 
-// get route -- for getting one admin
-router.get('/admin/:id', (request, response, next)=>{
-    Admin.findOne({_id: request.params.id}, request.body)
-        .then((admin)=>{
-             response.send(admin)
-    })    
-});
+
 
 
 // get route -- for getting all the orderderd food
@@ -119,16 +81,7 @@ router.get('/orders', (request, response, next)=>{
 
 
 
-// put route -- for  updating admin information
-router.put('/admin/:id', (request, response, next)=>{
-    Admin.findByIdAndUpdate({_id: request.params.id}, request.body).then(()=>{
-        Admin.findOne({_id: request.params.id})
-            .then((admin)=>{
-                response.send(admin)
-        })
-           
-    })
-});
+
 
 
 
@@ -146,14 +99,7 @@ router.put('/orders/:id', (request, response, next)=>{
 });
 
 
-// delete route -- for deleting  admin account
-router.delete('/admin/:id', (request, response, next)=>{
-    Admin.findByIdAndRemove({_id: request.params.id})
-        .then((admin)=>{
-            response.send(admin);
-        })
-    
-});
+
 
 
 
